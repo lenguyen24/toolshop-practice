@@ -13,13 +13,8 @@ class LoginPage(BasePage):
         self.email_error = page.get_by_test_id("email-error")
         self.password_error = page.get_by_test_id("password-error")
 
-    def submit(self):
+    def login(self, email: str, password: str):
+        self.email.fill(email)
+        self.password.fill(password)
         self.submit_button.click()
         return self
-
-    def login(self, email: str = "", password: str = ""):
-        if email:
-            self.email.fill(email)
-        if password:
-            self.password.fill(password)
-        return self.submit()
